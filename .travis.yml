@@ -19,7 +19,7 @@ jobs:
   include:
     - stage: Main Build and Tests
       before_script:
-        - docker pull rauc/testing:latest
+        - docker pull rauc/testing:test
 
       script:
         # Prepare environment for Coverity tool
@@ -44,7 +44,7 @@ jobs:
             --tmpfs /tmp:exec \
             -v ${TOOL_BASE}:${TOOL_BASE} \
             -u travis $ci_env \
-            --name rauc-ci rauc/testing:latest bash
+            --name rauc-ci rauc/testing:test bash
 
         # Make sure Coverity script is executable
         # - docker cp test/run-coverity.sh rauc-ci:/usr/local/bin
